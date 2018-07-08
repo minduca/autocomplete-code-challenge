@@ -17,7 +17,7 @@ I didn't overthink in order to chose this language. I sticked to it because it's
 Very cool language, succinct, easy to grasp, fast to code. On the other hand, a little too much permissive for my personal taste. Maybe it's just a shift of perception that's needed, but this kind of openess is a little odd for me, since it might open space to some unwanted, non-orthodox creativity from unexperienced developers.
 
 ### Visual Studio Community 2017
-I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. The idia was to lever that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
+I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. My intention was to lever that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
 
 ## External dependencies
 
