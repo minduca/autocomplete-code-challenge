@@ -26,3 +26,7 @@ I was between [Flask](http://flask.pocoo.org/) and [Django](https://www.djangopr
 
 ### Typings
 [Typings](https://docs.python.org/3/library/typing.html) is a library that adds hint typings. It helps mitigate some basic compilation issues.
+
+## Third-partiy attributions
+
+This sample application uses Geonames's dataset to build autocomplete recommendation for cities in Canada and the USA. Geoname is governed by a CC3 license. More information is available at http://download.geonames.org/export/dump/readme.txt
