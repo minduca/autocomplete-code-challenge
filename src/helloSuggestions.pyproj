@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>ce8de8d1-7d50-4d8c-bf0a-cc503b5b517d</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>runserver.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Web launcher</LaunchProvider>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+    <Name>helloSuggestions</Name>
+    <RootNamespace>helloSuggestions</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <WebBrowserPort>50900</WebBrowserPort>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="helloSuggestions\core.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\placeSearchConfig.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\placeSearchEngine.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\placeSearchStrategy.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\db.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\serialisationHelper.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\place.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\api.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="runserver.py" />
+    <Compile Include="helloSuggestions\__init__.py" />
+    <Compile Include="helloSuggestions\views.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="helloSuggestions\" />
+    <Folder Include="helloSuggestions\static\" />
+    <Folder Include="helloSuggestions\static\content\" />
+    <Folder Include="helloSuggestions\static\fonts\" />
+    <Folder Include="helloSuggestions\static\scripts\" />
+    <Folder Include="helloSuggestions\templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
+    <Content Include="helloSuggestions\static\content\bootstrap.css" />
+    <Content Include="helloSuggestions\static\content\bootstrap.min.css" />
+    <Content Include="helloSuggestions\static\content\site.css" />
+    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="helloSuggestions\static\scripts\bootstrap.js" />
+    <Content Include="helloSuggestions\static\scripts\bootstrap.min.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.min.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.min.map" />
+    <Content Include="helloSuggestions\static\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery.validate.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery.validate.min.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="helloSuggestions\static\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="helloSuggestions\static\scripts\modernizr-2.6.2.js" />
+    <Content Include="helloSuggestions\static\scripts\respond.js" />
+    <Content Include="helloSuggestions\static\scripts\respond.min.js" />
+    <Content Include="helloSuggestions\static\scripts\_references.js" />
+    <Content Include="helloSuggestions\templates\index.html" />
+    <Content Include="helloSuggestions\templates\layout.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.6</Version>
+      <Description>env (Python 3.6 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
