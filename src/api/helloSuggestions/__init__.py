@@ -36,4 +36,3 @@ app = Flask(__name__) #application factory
 searchEngine = createSearchEngine() #in a local method to avoid spread and restraint scope of intermediate
                                     #variables.
 import helloSuggestions.api
-import helloSuggestions.views
