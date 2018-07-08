@@ -1,90 +1,28 @@
-# Coveo Backend Coding Challenge
-(inspired by https://github.com/busbud/coding-challenge-backend-c)
+**PS: this application is just an expression of my very personal view and experience of going through a new programming language, plus some random thoughts of mine included in the process. It is also my proposal of solution to a nice coding challenge**
 
-## Requirements
+# hello-suggestions
+Sample api in REST built on python that provides autocomplete suggestion for cities. 
 
-Design an API endpoint that provides auto-complete suggestions for large cities.
+This repo is a fork of [Coveo Backend Coding Challenge](https://github.com/coveo/backend-coding-challenge) and represents my solution proposal to its challenge at the date of the fork.
 
-- The endpoint is exposed at `/suggestions`
-- The partial (or complete) search term is passed as a querystring parameter `q`
-- The caller's location can optionally be supplied via querystring parameters `latitude` and `longitude` to help improve relative scores
-- The endpoint returns a JSON response with an array of scored suggested matches
-    - The suggestions are sorted by descending score
-    - Each suggestion has a score between 0 and 1 (inclusive) indicating confidence in the suggestion (1 is most confident)
-    - Each suggestion has a name which can be used to disambiguate between similarly named locations
-    - Each suggestion has a latitude and longitude
+## IDE, Tools and Languages
+Tools that I used to develop this sample application.
 
-## "The rules"
+### Python 3.6
+I built this application using Python version 3.6, which is the language most recent's version by the time this app was built. By the time I coded this, I was not literate in this language. I didn't have any previous background prior to this small test. Even its famous libraries are relativelly unknown to me. But altough it's the first time I write in python, I do take responsability for the design choices I made with the languages capabilities that I discovered whlist building this simple app.
 
-- *You can use the language and technology of your choosing.* It's OK to try something new (tell us if you do), but feel free to use something you're comfortable with. We don't care if you use something we don't; the goal here is not to validate your knowledge of a particular technology.
-- End result should be deployed on a public Cloud (Heroku, AWS etc. all have free tiers you can use).
+I didn't overthink in order to chose this language. I sticked to it because it's widely appreciated, mature (still have its way to grow though), has a lot of scripting traits and it seemed easy to understand. 
 
-## Advice
+##### My firsts impressions while building this
+Very cool language, succinct, easy to grasp, fast to code. On the other hand, a little too much permissive for my personal taste. Maybe it's just a shift of perception that's needed, but this kind of openess is a little odd for me, since it might open space to some unwanted, non-orthodox creativity from unexperienced developers.
 
-- **Try to design and implement your solution as you would do for real production code**. Show us how you create clean, maintainable code that does awesome stuff. Build something that we'd be happy to contribute to. This is not a programming contest where dirty hacks win the game.
-- Documentation and maintainability are a plus, and don't you forget those unit tests.
-- We don’t want to know if you can do exactly as asked (or everybody would have the same result). We want to know what **you** bring to the table when working on a project, what is your secret sauce. More features? Best solution? Thinking outside the box?
+### Visual Studio Community 2017
+I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. The idia was to lever that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
 
-## Can I use a database?
+## External dependencies
 
-If you wish, it's OK to use external systems such as a database, an Elastic index, etc. in your solution. But this is certainly not required to complete the basic requirements of the challenge. Keep in mind that **our goal here is to see some code of yours**; if you only implement a thin API on top of a DB we won't have much to look at.
+### Flask
+I was between [Flask](http://flask.pocoo.org/) and [Django](https://www.djangoproject.com/), since both are well stablished web frameworks for python. I decided to go with Flask because from what I saw Django uses a "batteries included" approach that brings the gorilla and whole forest when all you asked for was a banana. Flask on the other hand is this web microframework that contains only the core tools for web development, which seems a better fit for a simple scenario such as this.
 
-Our advice is that if you choose to use an external search system, you had better be doing something really truly awesome with it.
-
-## Sample responses
-
-These responses are meant to provide guidance. The exact values can vary based on the data source and scoring algorithm
-
-**Near match**
-
-    GET /suggestions?q=Londo&latitude=43.70011&longitude=-79.4163
-
-```json
-{
-  "suggestions": [
-    {
-      "name": "London, ON, Canada",
-      "latitude": "42.98339",
-      "longitude": "-81.23304",
-      "score": 0.9
-    },
-    {
-      "name": "London, OH, USA",
-      "latitude": "39.88645",
-      "longitude": "-83.44825",
-      "score": 0.5
-    },
-    {
-      "name": "London, KY, USA",
-      "latitude": "37.12898",
-      "longitude": "-84.08326",
-      "score": 0.5
-    },
-    {
-      "name": "Londontowne, MD, USA",
-      "latitude": "38.93345",
-      "longitude": "-76.54941",
-      "score": 0.3
-    }
-  ]
-}
-```
-
-**No match**
-
-    GET /suggestions?q=SomeRandomCityInTheMiddleOfNowhere
-
-```json
-{
-  "suggestions": []
-}
-```
-
-## References
-
-- Geonames provides city lists Canada and the USA http://download.geonames.org/export/dump/readme.txt
-
-## Getting Started
-
-Begin by forking this repo and cloning your fork. GitHub has apps for [Mac](http://mac.github.com/) and
-[Windows](http://windows.github.com/) that make this easier.
+### Typings
+[Typings](https://docs.python.org/3/library/typing.html) is a library that adds hint typings. It helps mitigate some basic compilation issues.
