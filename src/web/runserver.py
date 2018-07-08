@@ -1,9 +1,9 @@
 """
-This script runs the helloSuggestions application using a development server.
+This script runs the web application using a development server.
 """
 
 from os import environ
-from helloSuggestions import app
+from web import app
 
 if __name__ == '__main__':
     HOST = environ.get('SERVER_HOST', 'localhost')

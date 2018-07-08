@@ -16,10 +16,11 @@
     <WebBrowserUrl>http://localhost</WebBrowserUrl>
     <OutputPath>.</OutputPath>
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
-    <Name>helloSuggestions</Name>
-    <RootNamespace>helloSuggestions</RootNamespace>
+    <Name>api</Name>
+    <RootNamespace>api</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
-    <WebBrowserPort>50900</WebBrowserPort>
+    <WebBrowserPort>
+    </WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,38 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="helloSuggestions\" />
-    <Folder Include="helloSuggestions\static\" />
-    <Folder Include="helloSuggestions\static\content\" />
-    <Folder Include="helloSuggestions\static\fonts\" />
-    <Folder Include="helloSuggestions\static\scripts\" />
-    <Folder Include="helloSuggestions\templates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
-    <Content Include="helloSuggestions\static\content\bootstrap.css" />
-    <Content Include="helloSuggestions\static\content\bootstrap.min.css" />
-    <Content Include="helloSuggestions\static\content\site.css" />
-    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="helloSuggestions\static\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="helloSuggestions\static\scripts\bootstrap.js" />
-    <Content Include="helloSuggestions\static\scripts\bootstrap.min.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.min.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery-1.10.2.min.map" />
-    <Content Include="helloSuggestions\static\scripts\jquery.validate-vsdoc.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery.validate.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery.validate.min.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="helloSuggestions\static\scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="helloSuggestions\static\scripts\modernizr-2.6.2.js" />
-    <Content Include="helloSuggestions\static\scripts\respond.js" />
-    <Content Include="helloSuggestions\static\scripts\respond.min.js" />
-    <Content Include="helloSuggestions\static\scripts\_references.js" />
-    <Content Include="helloSuggestions\templates\index.html" />
-    <Content Include="helloSuggestions\templates\layout.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
