@@ -24,6 +24,9 @@ I consider myself relatively proficient on Visual Studio, so it was my first cho
 ### Flask
 I was between [Flask](http://flask.pocoo.org/) and [Django](https://www.djangoproject.com/), since both are well stablished web frameworks for python. I decided to go with Flask because from what I saw Django uses a "batteries included" approach that brings the gorilla and whole forest when all you asked for was a banana. Flask on the other hand is this web microframework that contains only the core tools for web development, which seems a better fit for a simple scenario such as this.
 
+### Flask-RESTPlus + Swagger UI
+[Flask-RESTplus](http://flask-restplus.readthedocs.io/en/stable/) is a lightweight plugin that improves Flask by adding better annotations to describes the REST API and expose its documentation as a [Swagger](https://swagger.io/tools/swagger-ui/) interface, which is pretty clean and free from heavy dependencies.
+
 ### Typings
 [Typings](https://docs.python.org/3/library/typing.html) is a library that adds hint typings. It helps mitigate some basic compilation issues.
 
