@@ -1,7 +1,7 @@
 from typing import Tuple
-from .place import Place
-from .db import IDb
-from .core import IPlaceSearchStrategy
+from helloSuggestions.place import Place
+from helloSuggestions.db import IDb
+from helloSuggestions.core import IPlaceSearchStrategy
 from typing import Callable # <- This represents a "hint" typed function
 
 class VeryDummyPlaceSearchStrategy(IPlaceSearchStrategy):

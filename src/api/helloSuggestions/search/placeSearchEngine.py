@@ -1,6 +1,6 @@
-from .place import Place
-from .core import IPlaceSearchStrategy
-from .placeSearchConfig import PlaceSearchConfig
+from helloSuggestions.place import Place
+from helloSuggestions.core import IPlaceSearchStrategy
+from helloSuggestions.search.placeSearchConfig import PlaceSearchConfig
 from typing import Tuple
 
 class PlaceSearchEngine(object):

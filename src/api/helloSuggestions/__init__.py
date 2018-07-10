@@ -9,30 +9,14 @@ This file is the entry point of the application, equivalent to the main() method
     # choices I made with the languages capabilities that I discovered whlist
     # building this simple app.
 
-# Choice of framework
-    # I was between Flask and Django, since both are well stablished web
-    # frameworks for python.  I decided to stick with Flask because from what
-    # I saw Django uses a "batteries included" approach that brings the gorilla
-    # and whole forest when all you asked for was a banana.  Flask on the other
-    # hand is is this web microframework that contains only the core tools for
-    # web development, which seems a better fit for a simple scenario such
-    # as this.
-
 from flask import Flask
-from .placeSearchEngine import PlaceSearchEngine
-from .placeSearchConfig import PlaceSearchConfig
-from .placeSearchStrategy import VeryDummyPlaceSearchStrategy
-from .db import InMemoryDb
+from helloSuggestions.search.placeSearchEngineFactory import createSearchEngine
+from helloSuggestions import settings
 
-# In a more complex scenatio we could use a builder instead of a factory to
-# create more elaborate instances
-def createSearchEngine() -> PlaceSearchEngine:
-    config = PlaceSearchConfig(maxNumberResults=10) #raw type arguments explicity declared for readability purposes
-    db = InMemoryDb()
-    strategy = VeryDummyPlaceSearchStrategy(db)
-    return PlaceSearchEngine(strategy, config)
+app = Flask(__name__)
 
-app = Flask(__name__) #application factory
-searchEngine = createSearchEngine() #in a local method to avoid spread and restraint scope of intermediate
-                                    #variables.
-import helloSuggestions.api
+# create the search engine
+searchEngine = createSearchEngine(settings.MAX_NUMBER_RESULTS)
+
+# init suggestions api
+import helloSuggestions.suggestionsApi

@@ -34,13 +34,16 @@
     <Compile Include="helloSuggestions\core.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\placeSearchConfig.py">
+    <Compile Include="helloSuggestions\search\placeSearchConfig.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\placeSearchEngine.py">
+    <Compile Include="helloSuggestions\search\placeSearchEngine.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\placeSearchStrategy.py">
+    <Compile Include="helloSuggestions\search\placeSearchEngineFactory.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\search\placeSearchStrategy.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="helloSuggestions\db.py">
@@ -52,7 +55,10 @@
     <Compile Include="helloSuggestions\place.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\api.py">
+    <Compile Include="helloSuggestions\suggestionsApi.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\settings.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />
@@ -60,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="helloSuggestions\" />
+    <Folder Include="helloSuggestions\search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
