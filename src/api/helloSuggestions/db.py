@@ -1,6 +1,10 @@
 from typing import Tuple
-from .core import IDb
 from .place import Place
+
+# Interface for data access
+class IDb(object):
+    def data(self) -> Tuple[Place]:
+        raise NotImplementedError
 
 s = Place #shortcut alias to improve readability of the strings
 

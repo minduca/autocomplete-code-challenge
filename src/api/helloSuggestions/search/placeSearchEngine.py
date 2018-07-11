@@ -1,5 +1,5 @@
 from helloSuggestions.place import Place
-from helloSuggestions.core import IPlaceSearchStrategy
+from helloSuggestions.search.placeSearchStrategy import IPlaceSearchStrategy
 from helloSuggestions.search.placeSearchConfig import PlaceSearchConfig
 from typing import Tuple
 

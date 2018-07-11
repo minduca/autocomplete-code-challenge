@@ -1,8 +1,12 @@
 from typing import Tuple
 from helloSuggestions.place import Place
 from helloSuggestions.db import IDb
-from helloSuggestions.core import IPlaceSearchStrategy
 from typing import Callable # <- This represents a "hint" typed function
+
+# Interface for search algorithms
+class IPlaceSearchStrategy(object):
+    def search(self, query) -> Tuple[Place]:
+        raise NotImplementedError()
 
 class VeryDummyPlaceSearchStrategy(IPlaceSearchStrategy):
     

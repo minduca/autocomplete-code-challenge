@@ -13,8 +13,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <LaunchProvider>Web launcher</LaunchProvider>
-    <WebBrowserUrl>
-    </WebBrowserUrl>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
     <OutputPath>.</OutputPath>
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>api</Name>
@@ -31,7 +30,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="helloSuggestions\core.py">
+    <Compile Include="helloSuggestions\endpoints\endpointshost.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="helloSuggestions\search\placeSearchConfig.py">
@@ -55,7 +54,7 @@
     <Compile Include="helloSuggestions\place.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\suggestionsApi.py">
+    <Compile Include="helloSuggestions\endpoints\suggestions.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="helloSuggestions\settings.py">
@@ -66,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="helloSuggestions\" />
+    <Folder Include="helloSuggestions\endpoints\" />
     <Folder Include="helloSuggestions\search\" />
   </ItemGroup>
   <ItemGroup>

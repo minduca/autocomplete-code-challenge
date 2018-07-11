@@ -6,16 +6,14 @@
     # hand is is this web microframework that contains only the core tools for
     # web development, which seems a better fit for a simple scenario such
     # as this.
-from helloSuggestions import app, searchEngine
-from .place import Place
-from .serialisationHelper import toJson
+from helloSuggestions import searchEngine, serviceHost
+from helloSuggestions.place import Place
+from helloSuggestions.serialisationHelper import toJson
 from typing import Tuple
-from flask import request, jsonify
-from flask_restplus import Resource, Api
+from flask import request
+from flask_restplus import Resource
 
-api = Api(app, version="1.0", title="Suggestions API - Code challenge")
-
-@api.route('/suggestions')
+@serviceHost.api.route('/suggestions')
 class SuggestionsApi(Resource):
 
     def get(self):
