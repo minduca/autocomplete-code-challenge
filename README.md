@@ -19,6 +19,24 @@ Very cool language, succinct, easy to grasp, fast to code. On the other hand, a 
 ### Visual Studio Community 2017
 I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. My intention was to lever that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
 
+## Project structure
+- ```src``` : Application code
+- ```test``` : Test project
+
+### Notes on the test project
+
+I was considering to add pytest as test framework. But I decided to only stay with 'unittest' because it integrates better with the IDE that I'm using.
+
+About the project structure, I found two main streams of thoughts :
+- (1) test files inside the src project and side-by-side to the content it tests (with some name convention, like, 'test_foo.py' to test 'foo.py' or 'test_foo_sufix1.py' if multiple test files are preferable)
+- (2) test project in a different module
+    
+I'm going with (2) the test project in a different module because I don't like the idea of doubling the size of the deployable and send test code mixed with production code. The path to the tests is the same path of the source element it tests in 'src'.
+    
+There is however a somewhat hidden beauty on the simplicity of (1) : you keep phisically together things there are semantically related and intuitively supposed to be close.  Maybe a decent solution to this would be to go with (1) but skipping the compilation of every test related content (including eventual external dependencies).
+
+All test methods have a 'test_' prefix.  This name convention is necessary for the IDE I'm using to find the tests on compilation time.
+
 ## External dependencies
 
 ### Flask
