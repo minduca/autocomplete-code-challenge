@@ -1,8 +1,10 @@
 import unittest
 
-# I was considering pytest as test framework.  But I will use the default
-# unittest package because it integrates better with the IDE that I'm using.
-# I found two streams of thoughts :
+# I was considering to add pytest as test framework.  But I decided to only
+# stay with 'unittest' because it integrates better with the IDE that I'm
+# using.
+
+# About the project structure, I found two main streams of thoughts :
     # (1) test files inside the src project and side-by-side to the content it
     # tests (with some name convention, like, 'test_foo.py' to test 'foo.py' or
     # 'test_foo_sufix1.py' if multiple test files are preferable)
@@ -10,8 +12,8 @@ import unittest
     
     # I'm going with (2) the test project in a different module because I don't
     # like the idea of doubling the size of the deployable and send test code
-    # mixed with production code.  On this approach, the path to the test in
-    # 'test' is the same as the path to the content it tests in 'src'
+    # mixed with production code.  The path to the tests is the same path of
+    # the source element it tests in 'src'.
     
     # There is a somewhat hidden beauty however on the simplicity of (1) : you
     # keep phisically together things there are semantically related and

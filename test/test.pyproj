@@ -56,8 +56,8 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\api\api.pyproj">
-      <Name>api</Name>
+    <ProjectReference Include="..\src\src.pyproj">
+      <Name>src</Name>
       <Project>{ce8de8d1-7d50-4d8c-bf0a-cc503b5b517d}</Project>
       <Private>True</Private>
     </ProjectReference>

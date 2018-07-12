@@ -1,6 +1,6 @@
 import unittest
 from typing import Tuple
-from mock import MagicMock
+from unittest.mock import MagicMock
 
 from helloSuggestions.search.placeSearchEngine import PlaceSearchEngine
 from helloSuggestions.search.placeSearchConfig import PlaceSearchConfig
