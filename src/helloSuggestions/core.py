@@ -6,6 +6,7 @@
 
 from typing import Tuple
 from .place import Place
+from helloSuggestions.search.placeScore import PlaceScore
 
 # Interface for data access
 class IDb(object):
@@ -19,5 +20,5 @@ class IDataReader(object):
 
 # Interface for search algorithms
 class IPlaceSearchStrategy(object):
-    def search(self, query) -> Tuple[Place, ...]:
+    def search(self, query) -> Tuple[PlaceScore, ...]:
         raise NotImplementedError()

@@ -1,7 +1,6 @@
 from helloSuggestions.core import IDb, IDataReader, Tuple, Place
 import asyncio
 
-s = Place #shortcut alias to improve readability of the strings
 class InMemoryDb(IDb):
 
     def __init__(self, reader: IDataReader):
@@ -11,8 +10,8 @@ class InMemoryDb(IDb):
 
     def data(self) -> Tuple[Place, ...]: 
 
-        # It seems that Tuple is an immutable type of array.  This will help us
-        # to reduce the surface of available operations.
+        # Tuple is an immutable type of array.  This will help us reduce the
+        # surface of operations on the collection.
         return self._data
 
     async def loadAsync(self):

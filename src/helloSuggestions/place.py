@@ -37,10 +37,11 @@ from decimal import Decimal
 class Place(object):
     
     def __init__(self, id:int, name: str, nameAscii:str, nameAlternative: str, country: str, latitude: Decimal, longitude: Decimal):
+        self.id : int = id
         self.name : str = name
-        self.nameAscii :str = nameAscii
+        self.nameAscii : str = nameAscii
         self.nameAlternative : str = nameAlternative
         self.country : str = country
         self.latitude : Decimal = latitude
-        self.longitude :Decimal = longitude
+        self.longitude : Decimal = longitude
 

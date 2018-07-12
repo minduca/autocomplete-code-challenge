@@ -32,9 +32,6 @@
     <Compile Include="test\search\test_placeSearchEngine.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test\test_serializationHelper.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="test\__init__.py" />
   </ItemGroup>
   <ItemGroup>

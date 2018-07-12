@@ -1,4 +1,4 @@
-from helloSuggestions.core import IPlaceSearchStrategy, Tuple, Place
+from helloSuggestions.core import IPlaceSearchStrategy, Tuple, Place, PlaceScore
 from helloSuggestions.search.placeSearchConfig import PlaceSearchConfig
 
 class PlaceSearchEngine(object):
@@ -7,9 +7,9 @@ class PlaceSearchEngine(object):
         self._searchStrategy : IPlaceSearchStrategy = searchStrategy
         self._config : PlaceSearchConfig = config
 
-    def search(self, query) -> Tuple[Place, ...]:
+    def search(self, query) -> Tuple[PlaceScore, ...]:
 
-        reponse : Tuple[Place, ...] = ()
+        reponse : Tuple[PlaceScore, ...] = ()
 
         if self._config.maxNumberResults <= 0: raise ValueError("value must be superior to 0")
 

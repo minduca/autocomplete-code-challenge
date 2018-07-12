@@ -6,15 +6,22 @@
     # hand is is this web microframework that contains only the core tools for
     # web development, which seems a better fit for a simple scenario such
     # as this.
-from helloSuggestions import searchEngine, serviceHost, Place, serializationHelper, Tuple
+from helloSuggestions import searchEngine, host, Tuple
+from helloSuggestions.core import PlaceScore
+from helloSuggestions.endpoints.models import PlaceDto, PlaceDtoMapper, suggestionsDtoDescription
 from flask import request
 from flask_restplus import Resource
 
-@serviceHost.api.route('/suggestions')
-@serviceHost.api.doc(params={'id': 'An ID'})
+@host.api.route('/suggestions')
 class SuggestionsApi(Resource):
 
+    @host.api.marshal_with(suggestionsDtoDescription)
     def get(self):
+        
         query : str = request.args.get('q')
-        places : Tuple[Place, ...] = searchEngine.search(query)
-        return serializationHelper.toJson(places)
+        places : Tuple[PlaceScore, ...] = searchEngine.search(query)
+        
+        mapper = PlaceDtoMapper()
+        placesDto: Tuple[PlaceDto, ...] = tuple(map(mapper.toDto, places))
+
+        return {'suggestions' : placesDto}

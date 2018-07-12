@@ -12,7 +12,7 @@ from helloSuggestions.core import IDb, Tuple, Place, IDataReader
 from helloSuggestions.inMemoryDb import InMemoryDb
 
 searchEngine : PlaceSearchEngine = None
-serviceHost : EndpointsHost = None
+host : EndpointsHost = None
 
 async def run(serverHost: str, port: int):
     
@@ -26,9 +26,9 @@ async def run(serverHost: str, port: int):
     searchEngine = infra.createSearchEngine(db)
     
     # create and starts the service host
-    global serviceHost
-    serviceHost = EndpointsHost()
-    serviceHost.run(serverHost, port)
+    global host
+    host = EndpointsHost()
+    host.run(serverHost, port)
 
 #Infrastructure initialization.
 class InfraFactory(object):
