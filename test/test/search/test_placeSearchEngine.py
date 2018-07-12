@@ -2,10 +2,10 @@ import unittest
 from typing import Tuple
 from unittest.mock import MagicMock
 
-from helloSuggestions.search.placeSearchEngine import PlaceSearchEngine
-from helloSuggestions.search.placeSearchConfig import PlaceSearchConfig
-from helloSuggestions.search.placeSearchStrategy import IPlaceSearchStrategy
-from helloSuggestions.place import Place
+from hello.search.placeSearchEngine import PlaceSearchEngine
+from hello.search.placeSearchConfig import PlaceSearchConfig
+from hello.search.placeSearchStrategy import IPlaceSearchStrategy
+from hello.place import Place
 
 class Test_placeSearchEngine(unittest.TestCase):
     

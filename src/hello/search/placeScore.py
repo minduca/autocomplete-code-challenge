@@ -1,5 +1,5 @@
 from typing import Tuple, Callable
-from helloSuggestions.place import Place
+from hello.place import Place
 
 class PlaceScore(object):
     def __init__(self, place: Place, score:float):

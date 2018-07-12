@@ -1,5 +1,5 @@
 import csv
-from helloSuggestions.core import IDataReader, Tuple, Place
+from hello.core import IDataReader, Tuple, Place
 from decimal import Decimal
 
 class TsvPlacesReader(IDataReader):

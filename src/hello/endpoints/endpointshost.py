@@ -13,4 +13,4 @@ class EndpointsHost(object):
         self.app.run(serverHost, port)
 
     def loadendpoints(self):
-        import helloSuggestions.endpoints.suggestions
+        import hello.endpoints.suggestions

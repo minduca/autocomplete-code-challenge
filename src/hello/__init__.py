@@ -1,15 +1,14 @@
-"""
-Entry point of the application
-"""
+# Entry point of the application
+
 import asyncio
-from helloSuggestions import settings
-from helloSuggestions.endpoints.endpointshost import EndpointsHost
-from helloSuggestions.search.placeSearchEngine import PlaceSearchEngine
-from helloSuggestions.search.placeSearchConfig import PlaceSearchConfig
-from helloSuggestions.search.placeSearchStrategy import VeryDummyPlaceSearchStrategy
-from helloSuggestions.tsvPlacesReader import TsvPlacesReader
-from helloSuggestions.core import IDb, Tuple, Place, IDataReader
-from helloSuggestions.inMemoryDb import InMemoryDb
+from hello import settings
+from hello.endpoints.endpointshost import EndpointsHost
+from hello.search.placeSearchEngine import PlaceSearchEngine
+from hello.search.placeSearchConfig import PlaceSearchConfig
+from hello.search.placeSearchStrategy import VeryDummyPlaceSearchStrategy
+from hello.tsvPlacesReader import TsvPlacesReader
+from hello.core import IDb, Tuple, Place, IDataReader
+from hello.inMemoryDb import InMemoryDb
 
 searchEngine : PlaceSearchEngine = None
 host : EndpointsHost = None

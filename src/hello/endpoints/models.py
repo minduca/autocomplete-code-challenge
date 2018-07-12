@@ -1,6 +1,6 @@
 from flask_restplus import fields
-from helloSuggestions import host, Tuple
-from helloSuggestions.core import PlaceScore
+from hello import host, Tuple
+from hello.core import PlaceScore
 
 placeDtoDescription = host.api.model('Geographical place name', {
     'name': fields.String(required=True, description='name of geographical point (utf8)'),

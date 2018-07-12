@@ -1,5 +1,5 @@
-from helloSuggestions.core import IPlaceSearchStrategy, Tuple, Place, PlaceScore
-from helloSuggestions.search.placeSearchConfig import PlaceSearchConfig
+from hello.core import IPlaceSearchStrategy, Tuple, Place, PlaceScore
+from hello.search.placeSearchConfig import PlaceSearchConfig
 
 class PlaceSearchEngine(object):
     

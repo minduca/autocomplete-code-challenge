@@ -1,11 +1,9 @@
-"""
-This script runs the helloSuggestions application using a development server.
-"""
+# Start the application
 
 import asyncio
 from os import environ
-from helloSuggestions import run
-from helloSuggestions import settings
+from hello import run
+from hello import settings
 
 if __name__ == '__main__':
     HOST = environ.get('SERVER_HOST', settings.DEFAULT_SERVER_HOST)

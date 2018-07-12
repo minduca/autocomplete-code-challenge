@@ -1,4 +1,4 @@
-from helloSuggestions.core import IDb, IDataReader, Tuple, Place
+from hello.core import IDb, IDataReader, Tuple, Place
 import asyncio
 
 class InMemoryDb(IDb):

@@ -1,5 +1,5 @@
 from typing import Tuple, Callable
-from helloSuggestions.core import IDb, IPlaceSearchStrategy, Place, PlaceScore
+from hello.core import IDb, IPlaceSearchStrategy, Place, PlaceScore
 
 
 class VeryDummyPlaceSearchStrategy(IPlaceSearchStrategy):

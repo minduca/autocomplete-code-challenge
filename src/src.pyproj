@@ -30,55 +30,55 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="helloSuggestions\core.py">
+    <Compile Include="hello\core.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\endpoints\endpointshost.py">
+    <Compile Include="hello\endpoints\endpointshost.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\endpoints\models.py">
+    <Compile Include="hello\endpoints\models.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\endpoints\__init__.py">
+    <Compile Include="hello\endpoints\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\search\placeScore.py">
+    <Compile Include="hello\search\placeScore.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\search\placeSearchConfig.py">
+    <Compile Include="hello\search\placeSearchConfig.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\search\placeSearchEngine.py">
+    <Compile Include="hello\search\placeSearchEngine.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\search\placeSearchStrategy.py">
+    <Compile Include="hello\search\placeSearchStrategy.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\inMemoryDb.py">
+    <Compile Include="hello\inMemoryDb.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\search\__init__.py">
+    <Compile Include="hello\search\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\place.py">
+    <Compile Include="hello\place.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\endpoints\suggestions.py">
+    <Compile Include="hello\endpoints\suggestions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\settings.py">
+    <Compile Include="hello\settings.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\tsvPlacesReader.py">
+    <Compile Include="hello\tsvPlacesReader.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />
-    <Compile Include="helloSuggestions\__init__.py" />
+    <Compile Include="hello\__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="helloSuggestions\" />
-    <Folder Include="helloSuggestions\endpoints\" />
-    <Folder Include="helloSuggestions\search\" />
+    <Folder Include="hello\" />
+    <Folder Include="hello\endpoints\" />
+    <Folder Include="hello\search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />

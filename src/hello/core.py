@@ -6,7 +6,7 @@
 
 from typing import Tuple
 from .place import Place
-from helloSuggestions.search.placeScore import PlaceScore
+from hello.search.placeScore import PlaceScore
 
 # Interface for data access
 class IDb(object):
