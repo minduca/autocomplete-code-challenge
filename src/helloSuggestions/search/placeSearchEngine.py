@@ -13,7 +13,7 @@ class PlaceSearchEngine(object):
 
         reponse: Tuple[Place] = ()
 
-        if self.config.maxNumberResults < 0: raise ValueError("value must be superior to 0")
+        if self.config.maxNumberResults <= 0: raise ValueError("value must be superior to 0")
 
         queryParsed = None
 
@@ -23,7 +23,7 @@ class PlaceSearchEngine(object):
             queryParsed: str = query.strip().lower()
 
         if queryParsed:
-            reponse = self.searchStrategy.search(query)
+            reponse = self.searchStrategy.search(queryParsed)
             reponse = reponse[0:self.config.maxNumberResults] # split the array (it won't allocate extra space when results are lower than the maximum allowed)
 
         return reponse

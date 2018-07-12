@@ -8,12 +8,13 @@
     # as this.
 from helloSuggestions import searchEngine, serviceHost
 from helloSuggestions.place import Place
-from helloSuggestions.serialisationHelper import toJson
+from helloSuggestions.serializationHelper import toJson
 from typing import Tuple
 from flask import request
 from flask_restplus import Resource
 
 @serviceHost.api.route('/suggestions')
+@serviceHost.api.doc(params={'id': 'An ID'})
 class SuggestionsApi(Resource):
 
     def get(self):
