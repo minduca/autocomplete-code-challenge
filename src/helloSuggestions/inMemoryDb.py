@@ -1,14 +1,12 @@
-from typing import Tuple
-from .place import Place
-
-# Interface for data access
-class IDb(object):
-    def data(self) -> Tuple[Place]:
-        raise NotImplementedError
+from helloSuggestions.core import IDb, IDataReader, Tuple, Place
 
 s = Place #shortcut alias to improve readability of the strings
-
 class InMemoryDb(IDb):
+
+    def __init__(self, reader: IDataReader):
+        self._reader :IDataReader = reader
+        self._data: Tuple[Place, ...]
+
     def data(self) -> Tuple[Place, ...]: 
 
         # It seems that Tuple is an immutable type of array.  This will help us
@@ -32,3 +30,6 @@ class InMemoryDb(IDb):
             s("Bikini bottom"),
             s("The Shire"),
             s("Tatooine"))
+
+    def loadAsync(self):
+        self._data = tuple(self._reader.readAll())

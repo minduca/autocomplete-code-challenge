@@ -30,7 +30,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="helloSuggestions\core.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="helloSuggestions\endpoints\endpointshost.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\endpoints\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="helloSuggestions\search\placeSearchConfig.py">
@@ -39,13 +45,13 @@
     <Compile Include="helloSuggestions\search\placeSearchEngine.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\search\placeSearchEngineFactory.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="helloSuggestions\search\placeSearchStrategy.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="helloSuggestions\db.py">
+    <Compile Include="helloSuggestions\inMemoryDb.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\search\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="helloSuggestions\serializationHelper.py">
@@ -58,6 +64,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="helloSuggestions\settings.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="helloSuggestions\tsvPlacesReader.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />

@@ -1,5 +1,4 @@
 #Encapsulates Flask to minimize its spread and coupling through the application
-
 from flask import Flask
 from flask_restplus import Api
 
