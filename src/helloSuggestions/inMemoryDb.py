@@ -1,35 +1,28 @@
 from helloSuggestions.core import IDb, IDataReader, Tuple, Place
+import asyncio
 
 s = Place #shortcut alias to improve readability of the strings
 class InMemoryDb(IDb):
 
     def __init__(self, reader: IDataReader):
         self._reader :IDataReader = reader
-        self._data: Tuple[Place, ...]
+        self._data : Tuple[Place, ...] = None
+        self._loadtask = None
 
     def data(self) -> Tuple[Place, ...]: 
 
         # It seems that Tuple is an immutable type of array.  This will help us
         # to reduce the surface of available operations.
+        return self._data
 
-        # The access to the collection is a method instead of an attribute
-        # since we want to avoid modifications of items inside the collection.
-            # Despite the fact that we are using an immutable reference for the
-            # Tuple (and so are the pointers to the references of each item),
-            # the items are stored onto the heap and each item itself can have
-            # its properties changed on the outside.
+    async def loadAsync(self):
 
-            # Apparently there is also no notion of accessors other than
-            # public.  It seems to me that pyhton's philosophy is to trust on
-            # the developer.  Maybe it's just a shift of perception that's
-            # needed, but this kind of openess is a little odd for me, since it
-            # might open space to some unwanted, non-orthodox creativity from
-            # unexperienced developers.
+        def loadcore():
+            result : list = self._reader.readAll()
+            self._data = tuple(result)
 
-        return (s("Gotham City"),
-            s("Bikini bottom"),
-            s("The Shire"),
-            s("Tatooine"))
+        loop = asyncio.get_event_loop()
+        self._loadtask = loop.run_in_executor(None, loadcore)
+        
 
-    def loadAsync(self):
-        self._data = tuple(self._reader.readAll())
+    

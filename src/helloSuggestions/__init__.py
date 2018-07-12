@@ -1,7 +1,7 @@
 """
 Entry point of the application
 """
-
+import asyncio
 from helloSuggestions import settings
 from helloSuggestions.endpoints.endpointshost import EndpointsHost
 from helloSuggestions.search.placeSearchEngine import PlaceSearchEngine
@@ -14,12 +14,12 @@ from helloSuggestions.inMemoryDb import InMemoryDb
 searchEngine : PlaceSearchEngine = None
 serviceHost : EndpointsHost = None
 
-def run(serverHost: str, port: int):
+async def run(serverHost: str, port: int):
     
     infra = InfraFactory()
 
     #create the database
-    db : IDb = infra.createDb()
+    db : IDb = await infra.createDb()
 
     # create the search engine
     global searchEngine 
@@ -38,9 +38,9 @@ class InfraFactory(object):
         strategy = VeryDummyPlaceSearchStrategy(db)
         return PlaceSearchEngine(strategy, config)
 
-    def createDb(self) -> IDb:
+    async def createDb(self) -> IDb:
         dataReader = TsvPlacesReader(settings.DATA_SOURCE_PATH)
         db : IDb = InMemoryDb(dataReader)
-        db.loadAsync()
+        await db.loadAsync()
         return db
 
