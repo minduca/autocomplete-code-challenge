@@ -5,7 +5,7 @@ Sample api in REST built on python that provides autocomplete suggestion for cit
 
 This repo is a fork of [Coveo Backend Coding Challenge](https://github.com/coveo/backend-coding-challenge) and represents my solution proposal to its challenge at the date of the fork.
 
-## Language of choice : Python (v3.6)
+## Language of choice : Python
 I built this application using Python version 3.6. By the time I coded this, I was not literate in this language. I didn't have any previous background prior to this small test. Even its famous libraries are relativelly unknown to me. But altough it's the first time I write in python, I do take responsability for the design choices I made with the languages capabilities that I discovered whlist building this simple app.
 
 ### Why this language ?
@@ -14,10 +14,20 @@ Honestly, I didn't overthink in order to chose Python for this challenge this la
 - It's validated by the community : widely appreciated, trending, relatively mature (still have its way to grow though).
 
 ### Popular choice on academic research
-Another reason that I considered for this was the fact that this language has become very popular inside universities. Altough I've never an autocomplete algorithm before, I foresaw that I would need some specialized data structures and/or ML algorithms, ressources that are constantly improved on academic research and are largely available with permissive licenses in this language.
+Another reason that I considered for this was the fact that this language has become very popular inside universities. Altough I've never built an autocomplete algorithm before, I foresaw that I would need some specialized data structures and/or ML algorithms, ressources that are constantly improved on academic research and are largely available with permissive licenses in this language.
 
 ### My firsts impressions while building this
-Very cool language, succinct, easy to grasp, fast to code. On the other hand, a little too much permissive for my personal taste. Maybe it's just a shift of perception that's needed, but this kind of openess is a little odd for me, since it might open space to some unwanted, non-orthodox creativity from unexperienced developers.
+
+##### Pros
+- Very cool language, succinct, easy to grasp, fast to code. 
+- Has tons of built-in components and it's growing steadly.
+- Syntax is clean and elegant.
+
+##### Cons
+- A little too much permissive for my personal taste. At the root level, everything is public. Maybe it's just a shift of perception, but this kind of openess is a little odd for me, since it might open space to some unwanted, non-orthodox creativity from unexperienced developers.
+- With the evolution of the language, we have a lot of ways of doing pretty much the same thing. Take async/await on python 3.X, for example. There are  just a lot of different patterns that were created from the beginning of the language until now and you can achieve similar results with very different syntaxes. Some choices becomes confusing when your introduction to the language is on a late version. I feel like I mixed old and new patterns in this coding challenge.
+
+But in summary, the **Pros** wheights much more than the **Cons** tough.
 
 ## IDE of choice : Visual Studio Community 2017
 I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. My intention was to lever from that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
