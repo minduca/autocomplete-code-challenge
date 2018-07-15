@@ -5,9 +5,9 @@ from hello import settings
 from hello.endpoints.endpointshost import EndpointsHost
 from hello.search.placeSearchEngine import PlaceSearchEngine
 from hello.search.placeSearchConfig import PlaceSearchConfig
-from hello.search.placeSearchStrategy import VeryDummyPlaceSearchStrategy
+from hello.search.placeSearchQueryStrategy import LevenshteinTrieSearchQueryStrategy
 from hello.tsvPlacesReader import TsvPlacesReader
-from hello.core import IDb, Tuple, Place, IDataReader
+from hello.core import IDb, Place, IDataReader
 from hello.inMemoryDb import InMemoryDb
 
 searchEngine : PlaceSearchEngine = None
@@ -22,7 +22,7 @@ async def run(serverHost: str, port: int):
 
     # create the search engine
     global searchEngine 
-    searchEngine = infra.createSearchEngine(db)
+    searchEngine = await infra.createSearchEngine(db)
     
     # create and starts the service host
     global host
@@ -32,9 +32,10 @@ async def run(serverHost: str, port: int):
 #Infrastructure initialization.
 class InfraFactory(object):
 
-    def createSearchEngine(self, db : IDb) -> PlaceSearchEngine:
+    async def createSearchEngine(self, db : IDb) -> PlaceSearchEngine:
         config = PlaceSearchConfig(settings.MAX_NUMBER_RESULTS)
-        strategy = VeryDummyPlaceSearchStrategy(db)
+        strategy = LevenshteinTrieSearchQueryStrategy(db)
+        await strategy.initAsync()
         return PlaceSearchEngine(strategy, config)
 
     async def createDb(self) -> IDb:

@@ -1,5 +1,7 @@
-from hello.core import IDb, IDataReader, Tuple, Place
+from hello.core import IDb, IDataReader, Place
 import asyncio
+import concurrent.futures
+from typing import Tuple, List
 
 class InMemoryDb(IDb):
 
@@ -8,20 +10,25 @@ class InMemoryDb(IDb):
         self._data : Tuple[Place, ...] = None
         self._loadtask = None
 
-    def data(self) -> Tuple[Place, ...]: 
+    async def getAllAsync(self) -> Tuple[Place, ...]: 
 
-        # Tuple is an immutable type of array.  This will help us reduce the
-        # surface of operations on the collection.
+        if not self._data:
+            if self._loadtask:
+                await asyncio.wait([self._loadtask])
+            else: 
+                self.load()
+
         return self._data
 
     async def loadAsync(self):
-
-        def loadcore():
-            result : list = self._reader.readAll()
-            self._data = tuple(result)
-
         loop = asyncio.get_event_loop()
-        self._loadtask = loop.run_in_executor(None, loadcore)
+        self._loadtask = loop.run_in_executor(None, self.load)
+
+    def load(self):
+        # tuple is an immutable type of array.  This will help us reduce the
+        # surface of operations on the collection.
+        result : List[Place] = self._reader.readAll()
+        self._data = tuple(result)
         
 
     

@@ -1,32 +1,34 @@
-from hello.core import IPlaceSearchStrategy, Tuple, Place, PlaceScore
+from hello.core import IPlaceSearchQueryStrategy, Place, PlaceScore, Tuple
+from hello.search.placeSearchResult import PlaceSearchResult
 from hello.search.placeSearchConfig import PlaceSearchConfig
+import time
 
 class PlaceSearchEngine(object):
     
-    def __init__(self, searchStrategy: IPlaceSearchStrategy, config: PlaceSearchConfig):
-        self._searchStrategy : IPlaceSearchStrategy = searchStrategy
+    def __init__(self, searchStrategy: IPlaceSearchQueryStrategy, config: PlaceSearchConfig):
+        self._searchStrategy : IPlaceSearchQueryStrategy = searchStrategy
         self._config : PlaceSearchConfig = config
 
-    def search(self, query) -> Tuple[PlaceScore, ...]:
+    def search(self, query) -> PlaceSearchResult:
 
-        reponse : Tuple[PlaceScore, ...] = ()
+        places : Tuple[PlaceScore, ...] = ()
 
         if self._config.maxNumberResults <= 0: raise ValueError("value must be superior to 0")
 
-        queryParsed = None
+        queryParsed : str = None
 
         if query:
-            # lower() since apparently there is no case insensitive comparison
-            # in python
-            # For simplicity purposes, we gonna deliberately scape case match
-            # for the recommendation.
-            queryParsed : str = query.strip().lower()
+            queryParsed : str = query.strip()
 
         if queryParsed:
-            reponse = self._searchStrategy.search(queryParsed)
-            reponse = reponse[0:self._config.maxNumberResults] # split the array (it won't allocate extra space when results are lower than
-                                                              # the maximum allowed)
 
-        return reponse
+            start = time.time()
+            places = self._searchStrategy.search(queryParsed)
+            end = time.time()
+            places = places[0:self._config.maxNumberResults]
+
+        return PlaceSearchResult(places, start, end)
+
+
 
 

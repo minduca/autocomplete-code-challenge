@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 
 from hello.search.placeSearchEngine import PlaceSearchEngine
 from hello.search.placeSearchConfig import PlaceSearchConfig
-from hello.search.placeSearchStrategy import IPlaceSearchStrategy
+from hello.search.placeSearchQueryStrategy import IPlaceSearchStrategy
 from hello.place import Place
 
 class Test_placeSearchEngine(unittest.TestCase):

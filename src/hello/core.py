@@ -4,21 +4,21 @@
 
 #if this file becomes too big, we can split it content in different files, but under the same module name.
 
-from typing import Tuple
+from typing import Tuple, List
 from .place import Place
 from hello.search.placeScore import PlaceScore
 
 # Interface for data access
 class IDb(object):
-    def data(self) -> Tuple[Place, ...]:
+    def getAllAsync(self) -> Tuple[Place, ...]:
         raise NotImplementedError
 
 # interface for reading from a data source
 class IDataReader(object):
-    def readAll() -> list:
+    def readAll() -> List[Place]:
         raise NotImplementedError()
 
 # Interface for search algorithms
-class IPlaceSearchStrategy(object):
+class IPlaceSearchQueryStrategy(object):
     def search(self, query) -> Tuple[PlaceScore, ...]:
         raise NotImplementedError()

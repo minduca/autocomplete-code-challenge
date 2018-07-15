@@ -1,5 +1,6 @@
 import csv
-from hello.core import IDataReader, Tuple, Place
+from hello.core import IDataReader, Place
+from typing import Tuple, List
 from decimal import Decimal
 
 class TsvPlacesReader(IDataReader):
@@ -7,9 +8,9 @@ class TsvPlacesReader(IDataReader):
     def __init__(self, path: str):
         self.path : str = path
 
-    def readAll(self) -> list :
+    def readAll(self) -> List[Place] :
 
-        placesList = []
+        placesList : List[Place] = []
 
         with open(self.path, encoding='utf-8') as tsvFileBin:
 
@@ -24,11 +25,16 @@ class TsvPlacesReader(IDataReader):
         return placesList
 
     def parsePlace(self, row) -> Place:
+
+        name : str = row['name'].strip()
+        nameAscii : str = row['ascii'].strip()
+        namesAlternatives : Tuple[str, ...] = tuple(row['alt_name'].strip().split(','))
+
         return Place(id=int(row['id']), 
-                     name=row['name'], 
-                     nameAscii=row['ascii'], 
-                     nameAlternative=row['alt_name'],
-                     country=row['country'],
+                     name=name, 
+                     nameAscii=nameAscii, 
+                     namesAlternatives=namesAlternatives,
+                     country=row['country'].strip(),
                      latitude=Decimal(row['lat']),
                      longitude=Decimal(row['long']))
 

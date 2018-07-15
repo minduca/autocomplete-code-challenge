@@ -1,4 +1,3 @@
-from typing import Tuple, Callable
 from hello.place import Place
 
 class PlaceScore(object):

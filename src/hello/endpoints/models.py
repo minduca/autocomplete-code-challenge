@@ -1,5 +1,5 @@
 from flask_restplus import fields
-from hello import host, Tuple
+from hello import host
 from hello.core import PlaceScore
 
 placeDtoDescription = host.api.model('Geographical place name', {

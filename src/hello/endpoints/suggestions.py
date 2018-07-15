@@ -6,11 +6,12 @@
     # hand is is this web microframework that contains only the core tools for
     # web development, which seems a better fit for a simple scenario such
     # as this.
-from hello import searchEngine, host, Tuple
-from hello.core import PlaceScore
+from hello import searchEngine, host
+from hello.search.placeSearchResult import PlaceSearchResult
 from hello.endpoints.models import PlaceDto, PlaceDtoMapper, suggestionsDtoDescription
 from flask import request
 from flask_restplus import Resource
+from typing import Tuple
 
 @host.api.route('/suggestions')
 class SuggestionsApi(Resource):
@@ -19,9 +20,9 @@ class SuggestionsApi(Resource):
     def get(self):
         
         query : str = request.args.get('q')
-        places : Tuple[PlaceScore, ...] = searchEngine.search(query)
+        result : PlaceSearchResult = searchEngine.search(query)
         
         mapper = PlaceDtoMapper()
-        placesDto: Tuple[PlaceDto, ...] = tuple(map(mapper.toDto, places))
+        placesDto: Tuple[PlaceDto, ...] = tuple(map(mapper.toDto, result.places))
 
         return {'suggestions' : placesDto}

@@ -1,4 +1,4 @@
-from typing import List
+from typing import Tuple, List
 from decimal import Decimal
 
 # Apparently python has no notion of accessors other than
@@ -36,12 +36,27 @@ from decimal import Decimal
     #from a code challenge, little extras counts.
 class Place(object):
     
-    def __init__(self, id:int, name: str, nameAscii:str, nameAlternative: str, country: str, latitude: Decimal, longitude: Decimal):
+    def __init__(self, id:int, name: str, nameAscii:str, namesAlternatives: Tuple[str, ...], country: str, latitude: Decimal, longitude: Decimal):
         self.id : int = id
         self.name : str = name
         self.nameAscii : str = nameAscii
-        self.nameAlternative : str = nameAlternative
+        self.namesAlternatives : Tuple[str, ...] = namesAlternatives
         self.country : str = country
         self.latitude : Decimal = latitude
         self.longitude : Decimal = longitude
 
+    def getAllNames(self) -> list:
+        
+        allNames: list = list(self.namesAlternatives)
+
+        def appendIfDoesntExist(text: str):
+            if not text in allNames:
+                allNames.append(text)
+
+        appendIfDoesntExist(self.name)
+        appendIfDoesntExist(self.nameAscii)
+
+        return allNames
+
+    def __repr__(self):
+        return self.name

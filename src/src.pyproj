@@ -51,10 +51,16 @@
     <Compile Include="hello\search\placeSearchEngine.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="hello\search\placeSearchStrategy.py">
+    <Compile Include="hello\search\placeSearchQueryStrategy.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="hello\inMemoryDb.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="hello\search\placeSearchResult.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="hello\search\trie.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="hello\search\__init__.py">
