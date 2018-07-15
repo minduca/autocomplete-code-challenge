@@ -5,19 +5,32 @@ Sample api in REST built on python that provides autocomplete suggestion for cit
 
 This repo is a fork of [Coveo Backend Coding Challenge](https://github.com/coveo/backend-coding-challenge) and represents my solution proposal to its challenge at the date of the fork.
 
-## IDE, Tools and Languages
-Tools that I used to develop this sample application.
+## Language of choice : Python
+I built this application using Python version 3.6. By the time I coded this, I was not literate in this language. I didn't have any previous background prior to this small challenge. Even its famous libraries are relativelly unknown to me. But altough it's the first time I write in python, I do take responsability for the design choices I made with the languages capabilities that I discovered whlist building this simple app.
 
-### Python 3.6
-I built this application using Python version 3.6, which is the language most recent's version by the time this app was built. By the time I coded this, I was not literate in this language. I didn't have any previous background prior to this small test. Even its famous libraries are relativelly unknown to me. But altough it's the first time I write in python, I do take responsability for the design choices I made with the languages capabilities that I discovered whlist building this simple app.
+### Why this language ?
+Honestly, I didn't overthink in order to choose Python for the challenge. 
+- I wanted to use a language that I didn't have any previous knowledge because my primary intention is to learn and stimulate my brain, not to show off. It also has a lot of scripting traits (which envolves a different mindset from what I am used to) and it seemed easy to take a grasp.
+- It's validated by the community : widely appreciated, trending, relatively mature (still have its way to grow though).
 
-I didn't overthink in order to chose this language. I sticked to it because it's widely appreciated, mature (still have its way to grow though), has a lot of scripting traits and it seemed easy to understand. 
+#### Popular choice on academic research
+Another reason that I considered for this was the fact that this language has become very popular inside universities. Altough I've never built an autocomplete algorithm before, I foresaw that I would need some specialized data structures and/or ML algorithms, ressources that are constantly improved on academic research and are largely available with permissive licenses on this language.
 
-##### My firsts impressions while building this
-Very cool language, succinct, easy to grasp, fast to code. On the other hand, a little too much permissive for my personal taste. Maybe it's just a shift of perception that's needed, but this kind of openess is a little odd for me, since it might open space to some unwanted, non-orthodox creativity from unexperienced developers.
+### My firsts impressions while building this
 
-### Visual Studio Community 2017
-I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. My intention was to lever that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
+##### Pros
+- Very cool language, succinct, easy to grasp, fast to code. 
+- Has tons of built-in components and it's growing steadly.
+- Syntax is clean and elegant.
+
+##### Cons
+- A little too much permissive for my personal taste. At the root level, everything is public. Maybe it's just a shift of perception, but this kind of openess is a little odd for me, since it might open space to some unwanted, non-orthodox creativity from unexperienced developers.
+- The language changes (that's only natural) and so does the syntax for achieving a result. However, I stumbled across async/await on python 3.X, for example, and found a lot of different patterns (some created on the beginning of the language, others rather recently) and you can achieve similar results with very different syntaxes. Some choices becomes confusing when your introduction to the language is on a late version. I feel like I mixed old and new patterns in this coding challenge.
+
+But in summary, the language is awesome and its **Pros** wheights a lot more than these small **Cons**.
+
+## IDE of choice : Visual Studio Community 2017
+I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. My intention was to lever from that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
 
 ## Project structure
 - ```src``` : Application code
