@@ -1,10 +1,10 @@
-from hello.core import IPlaceSearchQueryStrategy, Place, PlaceScore, Tuple
+import time
+from hello.core import IPlaceSearchQueryStrategy, PlaceScore, Tuple
 from hello.search.placeSearchResult import PlaceSearchResult
 from hello.search.placeSearchConfig import PlaceSearchConfig
-import time
 
-class PlaceSearchEngine(object):
-    
+class PlaceSearchEngine:
+
     def __init__(self, searchStrategy: IPlaceSearchQueryStrategy, config: PlaceSearchConfig):
         self._searchStrategy : IPlaceSearchQueryStrategy = searchStrategy
         self._config : PlaceSearchConfig = config
@@ -13,7 +13,8 @@ class PlaceSearchEngine(object):
 
         places : Tuple[PlaceScore, ...] = ()
 
-        if self._config.maxNumberResults <= 0: raise ValueError("value must be superior to 0")
+        if self._config.maxNumberResults <= 0:
+            raise ValueError("value must be superior to 0")
 
         queryParsed : str = None
 
@@ -28,7 +29,3 @@ class PlaceSearchEngine(object):
             places = places[0:self._config.maxNumberResults]
 
         return PlaceSearchResult(places, start, end)
-
-
-
-

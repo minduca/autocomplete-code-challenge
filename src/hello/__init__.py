@@ -30,7 +30,7 @@ async def run(serverHost: str, port: int):
     host.run(serverHost, port)
 
 #Infrastructure initialization.
-class InfraFactory(object):
+class InfraFactory:
 
     async def createSearchEngine(self, db : IDb) -> PlaceSearchEngine:
         config = PlaceSearchConfig(settings.MAX_NUMBER_RESULTS)
@@ -41,6 +41,5 @@ class InfraFactory(object):
     async def createDb(self) -> IDb:
         dataReader = TsvPlacesReader(settings.DATA_SOURCE_PATH)
         db : IDb = InMemoryDb(dataReader)
-        await db.loadAsync()
+        await db.initAsync()
         return db
-

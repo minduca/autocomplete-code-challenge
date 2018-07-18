@@ -1,7 +1,6 @@
-from hello.core import IDb, IDataReader, Place
 import asyncio
-import concurrent.futures
 from typing import Tuple, List
+from hello.core import IDb, IDataReader, Place
 
 class InMemoryDb(IDb):
 
@@ -20,7 +19,7 @@ class InMemoryDb(IDb):
 
         return self._data
 
-    async def loadAsync(self):
+    async def initAsync(self):
         loop = asyncio.get_event_loop()
         self._loadtask = loop.run_in_executor(None, self.load)
 
@@ -29,6 +28,3 @@ class InMemoryDb(IDb):
         # surface of operations on the collection.
         result : List[Place] = self._reader.readAll()
         self._data = tuple(result)
-        
-
-    

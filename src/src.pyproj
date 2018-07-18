@@ -87,6 +87,7 @@
     <Folder Include="hello\search\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".pylintrc" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>

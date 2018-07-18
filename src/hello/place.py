@@ -34,10 +34,17 @@ from decimal import Decimal
     
     #It's indeed important not to overdesign, but since this application comes
     #from a code challenge, little extras counts.
-class Place(object):
-    
-    def __init__(self, id:int, name: str, nameAscii:str, namesAlternatives: Tuple[str, ...], country: str, latitude: Decimal, longitude: Decimal):
-        self.id : int = id
+class Place:
+
+    def __init__(self, uid:int, 
+                 name: str, 
+                 nameAscii:str, 
+                 namesAlternatives: Tuple[str, ...], 
+                 country: str, 
+                 latitude: Decimal, 
+                 longitude: Decimal):
+
+        self.uid : int = uid
         self.name : str = name
         self.nameAscii : str = nameAscii
         self.namesAlternatives : Tuple[str, ...] = namesAlternatives
@@ -45,9 +52,9 @@ class Place(object):
         self.latitude : Decimal = latitude
         self.longitude : Decimal = longitude
 
-    def getAllNames(self) -> list:
-        
-        allNames: list = list(self.namesAlternatives)
+    def getAllNames(self) -> List[str]:
+
+        allNames : List[str] = [] # list(self.namesAlternatives)
 
         def appendIfDoesntExist(text: str):
             if not text in allNames:
