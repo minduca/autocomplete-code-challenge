@@ -10,29 +10,32 @@ from hello.tsvPlacesReader import TsvPlacesReader
 from hello.core import IDb, Place, IDataReader
 from hello.inMemoryDb import InMemoryDb
 
-searchEngine : PlaceSearchEngine = None
-host : EndpointsHost = None
+searchEngine: PlaceSearchEngine = None
+host: EndpointsHost = None
+
 
 async def run(serverHost: str, port: int):
-    
+
     infra = InfraFactory()
 
-    #create the database
-    db : IDb = await infra.createDb()
+    # create the database
+    db: IDb = await infra.createDb()
 
     # create the search engine
-    global searchEngine 
+    global searchEngine
     searchEngine = await infra.createSearchEngine(db)
-    
+
     # create and starts the service host
     global host
     host = EndpointsHost()
     host.run(serverHost, port)
 
-#Infrastructure initialization.
+# Infrastructure initialization.
+
+
 class InfraFactory:
 
-    async def createSearchEngine(self, db : IDb) -> PlaceSearchEngine:
+    async def createSearchEngine(self, db: IDb) -> PlaceSearchEngine:
         config = PlaceSearchConfig(settings.MAX_NUMBER_RESULTS)
         strategy = LevenshteinTrieSearchQueryStrategy(db)
         await strategy.initAsync()
@@ -40,6 +43,6 @@ class InfraFactory:
 
     async def createDb(self) -> IDb:
         dataReader = TsvPlacesReader(settings.DATA_SOURCE_PATH)
-        db : IDb = InMemoryDb(dataReader)
+        db: IDb = InMemoryDb(dataReader)
         await db.initAsync()
         return db

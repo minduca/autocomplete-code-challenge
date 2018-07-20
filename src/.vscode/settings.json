@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "${workspaceFolder}\\env\\Scripts\\python.exe",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
+}

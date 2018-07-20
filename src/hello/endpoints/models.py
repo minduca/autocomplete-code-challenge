@@ -15,6 +15,7 @@ suggestionsDtoDescription = host.api.model("Autocomplete suggestions", {
                                required=True, description='List of places ordered by score')
 })
 
+
 class PlaceDto:
 
     def __init__(self, name: str, latitude: str, longitude: str, score: float):
@@ -22,6 +23,7 @@ class PlaceDto:
         self.latitude: str = latitude
         self.longitude: str = longitude
         self.score: float = score
+
 
 class PlaceDtoMapper:
 
