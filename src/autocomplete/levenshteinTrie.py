@@ -21,12 +21,12 @@ class LevenshteinTrie:
     def __init__(self):
         self._root: TrieNode = TrieNode(letter="", wordpath="")
 
-    def insert(self, word: str, owner: object) -> None:
-        self._root.insert(word.lower(), owner)
+    def insert(self, word: str, owner: object=None) -> None:
+        self._root.insert(word.lower(), word, owner)
 
     # The search function returns a list of all words that are less than the
     # given maximum distance from the target word
-    def search(self, word: str, maxCost: int) -> List[NodeMatch]:
+    def search(self, word: str, maxCost: int) -> List[ResultMatch]:
 
         cumulativeResult: List[NodeMatch] = []
         tracker = LevenshteinTracker(word.lower(), maxCost)
@@ -35,7 +35,7 @@ class LevenshteinTrie:
             self._searchBranch(
                 self._root.children[char], cumulativeResult, tracker)
 
-        return list(map(lambda n: ResultMatch(n.node.wordpath, n.node.owner, n.cost), cumulativeResult))
+        return list(map(lambda n: ResultMatch(n.node.finalword, n.node.owner, n.cost), cumulativeResult))
 
     def _searchBranch(self, node: TrieNode, cumulativeResult: List[NodeMatch], tracker: LevenshteinTracker):
 

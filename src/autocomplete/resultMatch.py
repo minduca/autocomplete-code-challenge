@@ -7,4 +7,4 @@ class ResultMatch:
         self.cost: int = cost
 
     def __repr__(self):
-        return "'{}' -> {} ({})".format(self.word, self.owner, self.cost)
+        return "'{}' - {}".format(self.word, self.cost)

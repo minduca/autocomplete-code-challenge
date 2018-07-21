@@ -22,11 +22,12 @@ class PlaceSearchEngine:
         if query:
             queryParsed: str = query.strip()
 
-        if queryParsed:
+        start = time.time()
 
-            start = time.time()
+        if queryParsed:
             places = self._searchStrategy.search(queryParsed)
-            end = time.time()
             places = places[0:self._config.maxNumberResults]
+
+        end = time.time()
 
         return PlaceSearchResult(places, start, end)

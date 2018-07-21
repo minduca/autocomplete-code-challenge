@@ -5,12 +5,14 @@ class TrieNode:
     def __init__(self, letter: str, wordpath: str):
         self.letter: str = letter
         self.wordpath: str = wordpath
+        self.finalword: str = None
         self.owner: object = None
         self.children: Dict[str, TrieNode] = {}
 
-    def insert(self, wordpath: str, owner: object) -> None:
-        leaf: TrieNode = self._createOrGetLeaf(wordpath)
-        leaf.owner = owner
+    def insert(self, wordparsed: str, finalword: str, owner: object=None) -> None:
+        leaf: TrieNode = self._createOrGetLeaf(wordparsed)
+        leaf.finalword = finalword
+        leaf.owner = owner if owner is not None else finalword
 
     def isWholeWord(self) -> bool:
         return self.owner is not None
