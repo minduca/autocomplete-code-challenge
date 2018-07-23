@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: runserver",
+            "name": "Python: run app",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/runserver.py"
+            "program": "${workspaceFolder}/app.py"
         },
         {
             "name": "Python: Attach",
