@@ -4,7 +4,9 @@ from typing import List
 from autocomplete.resultHandlers import IResultHandler, ZeroToOneScaleScoreAggregator, CompositeHandlers
 from hello.core import IPlaceSearchQueryStrategy, ResultMatch
 from .placeSearchResult import PlaceSearchResult
-from .resultNormalizers import RedundantPlacesIdFilter, PlaceDisplayNameMatchOverride, PopulationScoreWeightsGenerator, CoordinatesScoreWeightsGenerator
+from .resultHandlers import RedundantPlacesIdFilter, PlaceDisplayNameMatchOverride, PopulationSizeScoreWeightsGenerator, CoordinatesScoreWeightsGenerator
+
+# Manages the whole flow of the search
 
 
 class PlaceSearchEngine:
@@ -48,7 +50,7 @@ class PlaceSearchEngine:
         resultHandlers: List[IResultHandler] = [
             RedundantPlacesIdFilter(),
             PlaceDisplayNameMatchOverride(),
-            PopulationScoreWeightsGenerator(weight=self._scoreWeightPopulationSize)
+            PopulationSizeScoreWeightsGenerator(weight=self._scoreWeightPopulationSize)
         ]
 
         if latitude is not None and longitude is not None:
@@ -57,4 +59,3 @@ class PlaceSearchEngine:
         resultHandlers.append(ZeroToOneScaleScoreAggregator())
 
         return CompositeHandlers(resultHandlers)
-

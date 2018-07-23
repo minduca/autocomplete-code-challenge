@@ -22,7 +22,7 @@ class IDataReader:
     def readAll(self) -> List[Place]:
         raise NotImplementedError()
 
-# Interface for search algorithms
+# Handles the *query* part of the search
 
 
 class IPlaceSearchQueryStrategy:

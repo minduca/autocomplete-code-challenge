@@ -46,7 +46,7 @@ class PlaceDisplayNameMatchOverride(IResultHandler):
                 r.word = r.owner.name
 
 
-class PopulationScoreWeightsGenerator(IResultHandler):
+class PopulationSizeScoreWeightsGenerator(IResultHandler):
 
     def __init__(self, weight: float):
         self._weight = weight

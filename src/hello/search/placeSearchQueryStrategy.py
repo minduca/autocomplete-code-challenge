@@ -4,6 +4,7 @@ from autocomplete.levenshteinTrie import LevenshteinTrie
 from hello.core import Place, ResultMatch, IDb, IPlaceSearchQueryStrategy
 
 
+# implementation that that handles the *query* part of the search
 class LevenshteinTrieSearchQueryStrategy(IPlaceSearchQueryStrategy):
 
     def __init__(self, db: IDb, scoreWeightQuerySearch: int):

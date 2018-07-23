@@ -14,6 +14,8 @@ class CompositeHandlers(IResultHandler):
                 handler.handle(results)
 
 
+# Scales the score to the range 0-1 and aggregates all the scores
+# onto a single value taking the weights of each score into account.
 class ZeroToOneScaleScoreAggregator(IResultHandler):
 
     def handle(self, results: List[ResultMatch]) -> None:
@@ -29,6 +31,8 @@ class ZeroToOneScaleScoreAggregator(IResultHandler):
             aggregatedScore = ScoreWeight(r.getScore(), weight=1)
             r.scores.clear()
             r.scores.append(aggregatedScore)
+
+# Scales the score to the range 0-1
 
 
 class ZeroToOneScaleScoreNormalizer(IResultHandler):

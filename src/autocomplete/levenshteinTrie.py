@@ -5,6 +5,8 @@ from .core import IResultHandler, ResultMatch, ScoreWeight
 
 # O(log(n))
 
+# Trie data structure(aka prefix tree, radix tree) that also implements word approximation by computing the Levenshtein distance between its nodes.
+
 
 class LevenshteinTrie:
 
@@ -32,9 +34,14 @@ class LevenshteinTrie:
         if resulthandler is not None and any(cumulativeResult):
             resulthandler.handle(cumulativeResult)
 
+        # For only the words that match the query, it sorts by score with O(n log(n))
         return sorted(cumulativeResult, key=lambda r: r.getScore(), reverse=True)
 
     def _navigateToPotentialPrefixes(self, fullword: str, tracker: LevenshteinTracker) -> List[TrieNode]:
+
+        # filter nodes in the Trie that are similars to the word being search.
+        # It uses some approximation that considers that the first letter of the
+        # query is always right, but the other letters might be misplaced by one position.
 
         potentialPrefixesNodes: List[TrieNode] = []
         approximatePrefixes: List[str] = []
@@ -56,6 +63,8 @@ class LevenshteinTrie:
         return potentialPrefixesNodes
 
     def _navigateTo(self, wordpath: str, tracker: LevenshteinTracker) -> TrieNode:
+
+        # Returns the exact node that corresponds to the word path
 
         node: TrieNode = self._root
 
