@@ -47,6 +47,7 @@
     <Compile Include="hello\endpoints\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="hello\infraFactory.py" />
     <Compile Include="hello\search\placeSearchEngine.py">
       <SubType>Code</SubType>
     </Compile>
