@@ -78,6 +78,9 @@
     <Compile Include="hello\tsvPlacesReader.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Procfile">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="hello\__init__.py" />
   </ItemGroup>
