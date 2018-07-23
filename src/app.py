@@ -15,11 +15,27 @@ from hello.endpoints.suggestions import SuggestionsApi
 
 app = Flask(__name__)
 api = Api(app, version="1.0", title="Code challenge - Suggestions API")
+searchEngine: PlaceSearchEngine = None
+
+
+@api.route('/suggestions')
+class SuggestionsApiDescriptor(Resource):
+    @api.marshal_with(SuggestionsDescriptor().createDescription(api))
+    def get(self) -> dict:
+        return SuggestionsApi(searchEngine).autocomplete()
 
 
 class InfraFactory:
 
-    async def createSearchEngine(self, db: IDb) -> PlaceSearchEngine:
+    async def createSeach(self) -> PlaceSearchEngine:
+
+        # create the database
+        db: IDb = await self._createDb()
+
+        # create the search engine
+        return await self._createSearchEngine(db)
+
+    async def _createSearchEngine(self, db: IDb) -> PlaceSearchEngine:
         strategy = LevenshteinTrieSearchQueryStrategy(db, settings.SCORE_WEIGHT_QUERY_SEARCH)
         await strategy.initAsync()
 
@@ -28,34 +44,17 @@ class InfraFactory:
                                  scoreWeightPopulationSize=settings.SCORE_WEIGHT_POPULATION_SIZE,
                                  scoreWeightCoordinatesDistance=settings.SCORE_WEIGHT_COORDINATES_DISTANCE)
 
-    async def createDb(self) -> IDb:
+    async def _createDb(self) -> IDb:
         dataReader = TsvPlacesReader(settings.DATA_SOURCE_PATH)
         db: IDb = InMemoryDb(dataReader)
         await db.initAsync()
         return db
 
 
-async def run():
-
-    infra = InfraFactory()
-
-    # create the database
-    db: IDb = await infra.createDb()
-
-    # create the search engine
-    searchEngine = await infra.createSearchEngine(db)
-
-    # create the api
-    @api.route('/suggestions')
-    class SuggestionsApiDescriptor(Resource):
-        @api.marshal_with(SuggestionsDescriptor().createDescription(api))
-        def get(self) -> dict:
-            return SuggestionsApi(searchEngine).autocomplete()
-
-    app.run()
-
 if __name__ == '__main__':
 
     loop = asyncio.get_event_loop()
-    task = loop.create_task(run())
+    task = loop.create_task(InfraFactory().createSeach())
     loop.run_until_complete(task)
+    searchEngine = task.result()
+    app.run()
