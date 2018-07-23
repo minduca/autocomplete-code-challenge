@@ -32,6 +32,9 @@ But in summary, the language is awesome and its **Pros** wheights a lot more tha
 ## IDE of choice : Visual Studio Community 2017
 I consider myself relatively proficient on Visual Studio, so it was my first choice of IDE. The idea was to invest time on the learning curve through the core concepts of the language and gain time on the tools. My intention was to lever from that VS way of creating some closed tiers of abstraction on the IDE in order to hide and handle some command lines, marginal downloads, installations, etc. Not the wisest choice, I guess. Identation/spacing bugs on the text editor has been annoyingly painful and cost me some precious time. Besides, I'm missing some alerts and errors on compilation time.
 
+### UPDATE
+Migrated (partially) to VS Code. Much better!
+
 ## Project structure
 - ```src``` : Application code
 - ```test``` : Test project
@@ -60,6 +63,9 @@ I was between [Flask](http://flask.pocoo.org/) and [Django](https://www.djangopr
 
 ### Typings
 [Typings](https://docs.python.org/3/library/typing.html) is a library that adds hint typings. It helps mitigate some basic compilation issues.
+
+### Geopy
+[Geopy](https://pypi.org/project/geopy/) is a geolocation library. I use it to compute lat-long distance using Vincenty's equation, ellipsoid standard WGS-84, which gives better results since it considers a more realistic curvature of the earth.
 
 ## Third-party attributions
 
