@@ -15,16 +15,6 @@ from hello.endpoints.suggestions import SuggestionsApi
 
 app = Flask(__name__)
 api = Api(app, version="1.0", title="Code challenge - Suggestions API")
-descriptor = SuggestionsDescriptor()
-
-
-@api.route('/suggestions')
-class SuggestionsApiDescriptor(Resource):
-    wrap: SuggestionsApi = None
-
-    @api.marshal_with(descriptor.createDescription(api))
-    def get(self) -> dict:
-        return SuggestionsApiDescriptor.wrap.autocomplete()
 
 
 class InfraFactory:
@@ -56,7 +46,11 @@ async def run():
     searchEngine = await infra.createSearchEngine(db)
 
     # create the api
-    SuggestionsApiDescriptor.wrap = SuggestionsApi(searchEngine)
+    @api.route('/suggestions')
+    class SuggestionsApiDescriptor(Resource):
+        @api.marshal_with(SuggestionsDescriptor().createDescription(api))
+        def get(self) -> dict:
+            return SuggestionsApi(searchEngine).autocomplete()
 
     app.run()
 
