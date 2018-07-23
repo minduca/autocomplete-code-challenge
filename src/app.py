@@ -24,6 +24,7 @@ class SuggestionsApiDescriptor(Resource):
 
     @api.marshal_with(descriptor.createDescription(api))
     def get(self) -> dict:
+        global suggestions
         return suggestions.autocomplete()
 
 
