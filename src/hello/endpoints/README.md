@@ -1,2 +1,2 @@
-## suggestions (REST api component)
+## suggestions (REST api)
 This component handle the web requests.
