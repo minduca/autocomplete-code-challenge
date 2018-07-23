@@ -30,6 +30,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="autocomplete\core.py" />
     <Compile Include="autocomplete\levenshteinTracker.py" />
     <Compile Include="autocomplete\levenshteinTrie.py" />
     <Compile Include="autocomplete\resultMatch.py" />
@@ -47,9 +48,6 @@
     <Compile Include="hello\endpoints\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="hello\search\placeScore.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="hello\search\placeSearchConfig.py">
       <SubType>Code</SubType>
     </Compile>
@@ -63,9 +61,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="hello\search\placeSearchResult.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="hello\search\trie.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="hello\search\__init__.py">

@@ -7,6 +7,7 @@
 # web development, which seems a better fit for a simple scenario such
 # as this.
 from typing import Tuple
+from decimal import Decimal
 from flask import request
 from flask_restplus import Resource
 from hello import searchEngine, host
@@ -21,10 +22,22 @@ class SuggestionsApi(Resource):
     def get(self) -> dict:
 
         query: str = request.args.get('q')
-        result: PlaceSearchResult = searchEngine.search(query)
+        latitude: Decimal = None
+        longitude: Decimal = None
+
+        try:
+            latitudeStr: str = request.args.get('latitude')
+            longitudeStr: str = request.args.get('longitude')
+
+            if latitudeStr and longitudeStr:
+                latitude = Decimal(latitudeStr)
+                longitude = Decimal(longitudeStr)
+        except ValueError:
+            pass
+
+        result: PlaceSearchResult = searchEngine.search(query, latitude, longitude)
 
         mapper = PlaceDtoMapper()
-        placesDto: Tuple[PlaceDto, ...] = tuple(
-            map(mapper.toDto, result.places))
+        placesDto: Tuple[PlaceDto, ...] = tuple(map(mapper.toDto, result.places))
 
         return {'suggestions': placesDto}

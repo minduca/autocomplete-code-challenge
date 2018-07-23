@@ -6,14 +6,14 @@
 # under the same module name.
 from typing import Tuple, List
 from hello.place import Place
-from hello.search.placeScore import PlaceScore
+from autocomplete.core import IResultHandler, ResultMatch
 
 # Interface for data access
 
 
 class IDb:
     def getAllAsync(self) -> Tuple[Place, ...]:
-        raise NotImplementedError
+        raise NotImplementedError()
 
 # interface for reading from a data source
 
@@ -26,5 +26,5 @@ class IDataReader:
 
 
 class IPlaceSearchQueryStrategy:
-    def search(self, query) -> Tuple[PlaceScore, ...]:
+    def search(self, query: str, resulthandler: IResultHandler) -> List[ResultMatch]:
         raise NotImplementedError()

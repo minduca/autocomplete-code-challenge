@@ -44,7 +44,8 @@ class Place:
                  namesAlternatives: Tuple[str, ...],
                  country: str,
                  latitude: Decimal,
-                 longitude: Decimal):
+                 longitude: Decimal,
+                 population: int):
 
         self.uid: int = uid
         self.name: str = name
@@ -53,10 +54,11 @@ class Place:
         self.country: str = country
         self.latitude: Decimal = latitude
         self.longitude: Decimal = longitude
+        self.population = population
 
     def getAllNames(self) -> List[str]:
 
-        allNames: List[str] = []  # list(self.namesAlternatives)
+        allNames: List[str] = list(self.namesAlternatives)
 
         def appendIfDoesntExist(text: str) -> None:
             if not text in allNames:

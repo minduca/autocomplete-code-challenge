@@ -4,7 +4,6 @@ import asyncio
 from hello import settings
 from hello.endpoints.endpointshost import EndpointsHost
 from hello.search.placeSearchEngine import PlaceSearchEngine
-from hello.search.placeSearchConfig import PlaceSearchConfig
 from hello.search.placeSearchQueryStrategy import LevenshteinTrieSearchQueryStrategy
 from hello.tsvPlacesReader import TsvPlacesReader
 from hello.core import IDb, Place, IDataReader
@@ -36,10 +35,13 @@ async def run(serverHost: str, port: int):
 class InfraFactory:
 
     async def createSearchEngine(self, db: IDb) -> PlaceSearchEngine:
-        config = PlaceSearchConfig(settings.MAX_NUMBER_RESULTS)
-        strategy = LevenshteinTrieSearchQueryStrategy(db)
+        strategy = LevenshteinTrieSearchQueryStrategy(db, settings.SCORE_WEIGHT_QUERY_SEARCH)
         await strategy.initAsync()
-        return PlaceSearchEngine(strategy, config)
+
+        return PlaceSearchEngine(strategy,
+                                 maxNumberResults=settings.MAX_NUMBER_RESULTS,
+                                 scoreWeightPopulationSize=settings.SCORE_WEIGHT_POPULATION_SIZE,
+                                 scoreWeightCoordinatesDistance=settings.SCORE_WEIGHT_COORDINATES_DISTANCE)
 
     async def createDb(self) -> IDb:
         dataReader = TsvPlacesReader(settings.DATA_SOURCE_PATH)

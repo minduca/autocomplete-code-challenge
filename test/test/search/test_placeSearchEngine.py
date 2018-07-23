@@ -3,18 +3,17 @@ from typing import Tuple
 from unittest.mock import MagicMock
 
 from hello.search.placeSearchEngine import PlaceSearchEngine
-from hello.search.placeSearchConfig import PlaceSearchConfig
 from hello.search.placeSearchResult import PlaceSearchResult
-from hello.core import IPlaceSearchQueryStrategy, PlaceScore
+from hello.core import IPlaceSearchQueryStrategy, ResultMatch
 
-class Test_placeSearchEngine(unittest.TestCase):
+class Test_PlaceSearchEngine(unittest.TestCase):
     
     def test_search_emptyStrategyResult_emptyCollection(self):
         #arrange
         query:str = 'auto'
         strategy: IPlaceSearchQueryStrategy = self.createStrategy(result=())
-        config = PlaceSearchConfig(maxNumberResults=10)
-        engine = PlaceSearchEngine(strategy, config)
+        engine: PlaceSearchEngine = self.createEngine(strategy)
+        strategy = engine._searchStrategy
 
         #act
         result: PlaceSearchResult = engine.search(query)
@@ -27,8 +26,7 @@ class Test_placeSearchEngine(unittest.TestCase):
         #arrange
         query:str = ''
         strategy: IPlaceSearchQueryStrategy = self.createStrategy(result=())
-        config = PlaceSearchConfig(maxNumberResults=10)
-        engine = PlaceSearchEngine(strategy, config)
+        engine: PlaceSearchEngine = self.createEngine(strategy)
 
         #act
         result: PlaceSearchResult = engine.search(query)
@@ -41,26 +39,18 @@ class Test_placeSearchEngine(unittest.TestCase):
         #arrange
         query:str = 'auto'
         strategy: IPlaceSearchQueryStrategy = self.createStrategy(result=())
-        config = PlaceSearchConfig(maxNumberResults=0)
-        engine = PlaceSearchEngine(strategy, config)
 
         #act / assert
-        self.assertRaises(ValueError, engine.search, query)
+        self.assertRaises(ValueError, PlaceSearchEngine, strategy, 0, 1, 1)
 
-    def test_search_queryTrailingSpaces_queryParsed(self):
-        #arrange
-        query:str = ' Auto Complete  '
-        strategy: IPlaceSearchQueryStrategy = self.createStrategy(result=())
-        config = PlaceSearchConfig(maxNumberResults=2)
-        engine = PlaceSearchEngine(strategy, config)
 
-        #act
-        result: PlaceSearchResult = engine.search(query)
+    def createEngine(self, strategy: IPlaceSearchQueryStrategy) -> PlaceSearchEngine:
+        return PlaceSearchEngine(strategy, 
+                                 maxNumberResults=10, 
+                                 scoreWeightPopulationSize=1,
+                                 scoreWeightCoordinatesDistance=1)
 
-        #assert
-        strategy.search.assert_called_with('Auto Complete')
-
-    def createStrategy(self, result: Tuple[PlaceScore]) -> IPlaceSearchQueryStrategy:
+    def createStrategy(self, result: Tuple[ResultMatch]) -> IPlaceSearchQueryStrategy:
         strategy = IPlaceSearchQueryStrategy()
         strategy.search = MagicMock(return_value=result)
         return strategy

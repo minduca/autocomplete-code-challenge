@@ -2,10 +2,13 @@ aniso8601==3.0.2
 click==6.7
 Flask==1.0.2
 flask-restplus==0.11.0
+geographiclib==1.49
+geopy==1.15.0
 itsdangerous==0.24
 Jinja2==2.10
 jsonschema==2.6.0
 MarkupSafe==1.0
+pbr==4.1.0
 pip==10.0.1
 pytz==2018.5
 setuptools==39.2.0

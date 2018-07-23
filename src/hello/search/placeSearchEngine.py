@@ -1,21 +1,31 @@
 import time
-from hello.core import IPlaceSearchQueryStrategy, PlaceScore, Tuple
+from decimal import Decimal
+from typing import List
+from autocomplete.resultHandlers import IResultHandler, ZeroToOneScaleScoreAggregator, CompositeHandlers
+from hello.core import IPlaceSearchQueryStrategy, ResultMatch
 from .placeSearchResult import PlaceSearchResult
-from .placeSearchConfig import PlaceSearchConfig
+from .resultNormalizers import RedundantPlacesIdFilter, PlaceDisplayNameMatchOverride, PopulationScoreWeightsGenerator, CoordinatesScoreWeightsGenerator
 
 
 class PlaceSearchEngine:
 
-    def __init__(self, searchStrategy: IPlaceSearchQueryStrategy, config: PlaceSearchConfig):
+    def __init__(self,
+                 searchStrategy: IPlaceSearchQueryStrategy,
+                 maxNumberResults: int,
+                 scoreWeightPopulationSize: int,
+                 scoreWeightCoordinatesDistance: int):
+
+        if maxNumberResults <= 0:
+            raise ValueError("The number of results to be returned must be superior to zero")
+
         self._searchStrategy: IPlaceSearchQueryStrategy = searchStrategy
-        self._config: PlaceSearchConfig = config
+        self._maxNumberResults: int = maxNumberResults
+        self._scoreWeightPopulationSize = scoreWeightPopulationSize
+        self._scoreWeightCoordinatesDistance = scoreWeightCoordinatesDistance
 
-    def search(self, query) -> PlaceSearchResult:
+    def search(self, query: str, latitude: Decimal = None, longitude: Decimal = None) -> PlaceSearchResult:
 
-        places: Tuple[PlaceScore, ...] = ()
-
-        if self._config.maxNumberResults <= 0:
-            raise ValueError("value must be superior to 0")
+        places: List[ResultMatch] = []
 
         queryParsed: str = None
 
@@ -25,9 +35,26 @@ class PlaceSearchEngine:
         start = time.time()
 
         if queryParsed:
-            places = self._searchStrategy.search(queryParsed)
-            places = places[0:self._config.maxNumberResults]
+            resultHandler: IResultHandler = self._buildResultHandler(latitude, longitude)
+            places = self._searchStrategy.search(queryParsed, resultHandler)
+            places = list(filter(lambda r: r.getScore() > 0, places))[0:self._maxNumberResults]
 
         end = time.time()
 
-        return PlaceSearchResult(places, start, end)
+        return PlaceSearchResult(tuple(places), start, end)
+
+    def _buildResultHandler(self, latitude: Decimal, longitude: Decimal) -> IResultHandler:
+
+        resultHandlers: List[IResultHandler] = [
+            RedundantPlacesIdFilter(),
+            PlaceDisplayNameMatchOverride(),
+            PopulationScoreWeightsGenerator(weight=self._scoreWeightPopulationSize)
+        ]
+
+        if latitude is not None and longitude is not None:
+            resultHandlers.append(CoordinatesScoreWeightsGenerator(latitude, longitude, weight=self._scoreWeightCoordinatesDistance))
+
+        resultHandlers.append(ZeroToOneScaleScoreAggregator())
+
+        return CompositeHandlers(resultHandlers)
+

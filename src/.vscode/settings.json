@@ -2,5 +2,11 @@
     "python.pythonPath": "${workspaceFolder}\\env\\Scripts\\python.exe",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
+    "python.formatting.autopep8Args": [
+        "--max-line-length=200"
+    ],
+    "python.linting.pep8Args": [
+        "--max-line-length=200"
+    ]
 }

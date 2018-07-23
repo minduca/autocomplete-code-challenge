@@ -2,7 +2,7 @@ import unittest
 from typing import Tuple, List
 from unittest.mock import MagicMock
 from autocomplete.levenshteinTrie import LevenshteinTrie
-from autocomplete.resultMatch import ResultMatch
+from autocomplete.core import ResultMatch
 
 class Test_LevenshteinTrie(unittest.TestCase):
 
@@ -41,7 +41,7 @@ class Test_LevenshteinTrie(unittest.TestCase):
 
     def createTrie(self, words: Tuple[str, ...]) -> LevenshteinTrie:
         
-        trie = LevenshteinTrie()
+        trie = LevenshteinTrie(fixedPrefixSize=2, scoreWeight=1)
 
         for word in words:
             trie.insert(word)

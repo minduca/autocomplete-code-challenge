@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 
 class TrieNode:
@@ -9,6 +9,7 @@ class TrieNode:
         self.owner: object = None
         self.children: Dict[str, TrieNode] = {}
 
+    # O(log(n))
     def insert(self, wordparsed: str, finalword: str, owner: object=None) -> None:
         leaf: TrieNode = self._createOrGetLeaf(wordparsed)
         leaf.finalword = finalword
@@ -17,8 +18,18 @@ class TrieNode:
     def isWholeWord(self) -> bool:
         return self.owner is not None
 
-    def _createOrGetLeaf(self, fullword: str):
+    def getChildrenWholeWordsNodes(self):
+        allwords: List[TrieNode] = []
 
+        for char in self.children:
+            node = self.children[char]
+            if node.isWholeWord():
+                allwords.append(node)
+            allwords.extend(node.getChildrenWholeWordsNodes())
+
+        return allwords
+
+    def _createOrGetLeaf(self, fullword: str):
         node = self
 
         for char in fullword:
