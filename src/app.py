@@ -10,21 +10,21 @@ from hello.search.placeSearchQueryStrategy import LevenshteinTrieSearchQueryStra
 from hello.tsvPlacesReader import TsvPlacesReader
 from hello.core import IDb
 from hello.inMemoryDb import InMemoryDb
-from hello.endpoints.models import PlaceDescriptionFactory
+from hello.endpoints.models import SuggestionsDescriptor
 from hello.endpoints.suggestions import SuggestionsApi
 
 app = Flask(__name__)
 api = Api(app, version="1.0", title="Code challenge - Suggestions API")
-searchEngine: PlaceSearchEngine = None
-descriptionFactory = PlaceDescriptionFactory()
+suggestions: SuggestionsApi = None
+descriptor = SuggestionsDescriptor()
 
 
 @api.route('/suggestions')
-class SuggestionsApiDescription(Resource):
+class SuggestionsApiDescriptor(Resource):
 
-    @api.marshal_with(descriptionFactory.createSuggestionsDtoDescription(api))
+    @api.marshal_with(descriptor.createDescription(api))
     def get(self) -> dict:
-        return SuggestionsApi(searchEngine).autocomplete()
+        return suggestions.autocomplete()
 
 
 class InfraFactory:
@@ -53,8 +53,10 @@ async def run():
     db: IDb = await infra.createDb()
 
     # create the search engine
-    global searchEngine
     searchEngine = await infra.createSearchEngine(db)
+
+    global suggestions
+    suggestions = SuggestionsApi(searchEngine)
 
     app.run(use_reloader=True)
 

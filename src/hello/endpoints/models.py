@@ -2,9 +2,9 @@ from flask_restplus import fields
 from hello.core import ResultMatch
 
 
-class PlaceDescriptionFactory:
+class SuggestionsDescriptor:
 
-    def createSuggestionsDtoDescription(self, api):
+    def createDescription(self, api):
 
         placeDtoDescription = api.model('Geographical place name', {
             'name': fields.String(required=True, description='name of geographical point (utf8)'),
