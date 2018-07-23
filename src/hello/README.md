@@ -5,3 +5,4 @@ On its root level :
 - It handles the dependency injection of the whole application.
 - It centralizes the settings.
 - It initializes the web services and some external dependencies
+- It loads (async) to the memory the content of the TSV database
