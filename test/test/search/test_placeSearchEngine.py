@@ -54,4 +54,5 @@ class Test_PlaceSearchEngine(unittest.TestCase):
         strategy = IPlaceSearchQueryStrategy()
         strategy.search = MagicMock(return_value=result)
         return strategy
-        
+       
+    #TODO add missing tests
