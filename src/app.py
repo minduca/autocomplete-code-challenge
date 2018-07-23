@@ -18,13 +18,12 @@ api = Api(app, version="1.0", title="Code challenge - Suggestions API")
 descriptor = SuggestionsDescriptor()
 
 
-@api.route('/suggestions')
 class SuggestionsApiDescriptor(Resource):
-    suggestions: SuggestionsApi = None
+    wrap: SuggestionsApi = None
 
     @api.marshal_with(descriptor.createDescription(api))
     def get(self) -> dict:
-        return SuggestionsApiDescriptor.suggestions.autocomplete()
+        return SuggestionsApiDescriptor.wrap.autocomplete()
 
 
 class InfraFactory:
@@ -56,7 +55,8 @@ async def run():
     searchEngine = await infra.createSearchEngine(db)
 
     # create the api
-    SuggestionsApiDescriptor.suggestions = SuggestionsApi(searchEngine)
+    SuggestionsApiDescriptor.wrap = SuggestionsApi(searchEngine)
+    api.add_resource(SuggestionsApiDescriptor, "/suggestions")
 
     app.run(use_reloader=True)
 
