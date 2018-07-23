@@ -1,6 +1,6 @@
 # Centralize constants that are related to the configuration of the application
 
-DATA_SOURCE_PATH = '../data/cities_canada-usa.tsv'
+DATA_SOURCE_PATH = 'data/cities_canada-usa.tsv'
 
 DEBUG = True
 

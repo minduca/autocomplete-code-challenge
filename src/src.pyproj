@@ -33,7 +33,7 @@
     <Compile Include="autocomplete\core.py" />
     <Compile Include="autocomplete\levenshteinTracker.py" />
     <Compile Include="autocomplete\levenshteinTrie.py" />
-    <Compile Include="autocomplete\resultMatch.py" />
+    <Compile Include="autocomplete\resultHandlers.py" />
     <Compile Include="autocomplete\trieNode.py" />
     <Compile Include="autocomplete\__init__.py" />
     <Compile Include="hello\core.py">
@@ -48,9 +48,6 @@
     <Compile Include="hello\endpoints\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="hello\search\placeSearchConfig.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="hello\search\placeSearchEngine.py">
       <SubType>Code</SubType>
     </Compile>
@@ -63,6 +60,7 @@
     <Compile Include="hello\search\placeSearchResult.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="hello\search\resultHandlers.py" />
     <Compile Include="hello\search\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -86,12 +84,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="autocomplete\" />
+    <Folder Include="data\" />
     <Folder Include="hello\" />
     <Folder Include="hello\endpoints\" />
     <Folder Include="hello\search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".pylintrc" />
+    <Content Include="autocomplete\README.md" />
+    <Content Include="data\cities_canada-usa.tsv" />
+    <Content Include="data\README.md" />
+    <Content Include="hello\endpoints\README.md" />
+    <Content Include="hello\README.md" />
+    <Content Include="hello\search\README.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
