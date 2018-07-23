@@ -41,9 +41,6 @@
     <Compile Include="hello\core.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="hello\endpoints\endpointshost.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="hello\endpoints\models.py">
       <SubType>Code</SubType>
     </Compile>
