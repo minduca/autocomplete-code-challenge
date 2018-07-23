@@ -30,7 +30,7 @@ class PlaceDto:
 class PlaceDtoMapper:
 
     def toDto(self, entity: ResultMatch) -> PlaceDto:
-        return PlaceDto(name=entity.owner.name,
+        return PlaceDto(name=entity.word,
                         latitude=str(entity.owner.latitude),
                         longitude=str(entity.owner.longitude),
                         score=round(entity.getScore(), 3))
