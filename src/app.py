@@ -18,6 +18,7 @@ api = Api(app, version="1.0", title="Code challenge - Suggestions API")
 descriptor = SuggestionsDescriptor()
 
 
+@api.route('/suggestions')
 class SuggestionsApiDescriptor(Resource):
     wrap: SuggestionsApi = None
 
@@ -56,9 +57,8 @@ async def run():
 
     # create the api
     SuggestionsApiDescriptor.wrap = SuggestionsApi(searchEngine)
-    api.add_resource(SuggestionsApiDescriptor, "/suggestions")
 
-    app.run(use_reloader=True)
+    app.run()
 
 if __name__ == '__main__':
 
