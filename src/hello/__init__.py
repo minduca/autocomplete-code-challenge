@@ -13,7 +13,7 @@ searchEngine: PlaceSearchEngine = None
 host: EndpointsHost = None
 
 
-async def run(serverHost: str, port: int):
+async def run(serverHost: str, port: int, app, api):
 
     infra = InfraFactory()
 
@@ -26,7 +26,7 @@ async def run(serverHost: str, port: int):
 
     # create and starts the service host
     global host
-    host = EndpointsHost()
+    host = EndpointsHost(app, api)
     host.run(serverHost, port)
 
 # Infrastructure initialization.
