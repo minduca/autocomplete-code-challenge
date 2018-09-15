@@ -1,6 +1,6 @@
 **PS: this repo is an expression of my very personal view and process of going through a new programming language, plus some random thoughts of mine included in the process. It is also my proposal of solution to a nice coding challenge**
 
-# hello-suggestions
+# autocomplete-code-challenge
 Sample api in REST built on python that provides autocomplete suggestion for cities. 
 
 This repo is a fork of [Coveo Backend Coding Challenge](https://github.com/coveo/backend-coding-challenge) and represents my solution proposal to its challenge at the date of the fork.
